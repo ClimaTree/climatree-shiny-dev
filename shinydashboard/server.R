@@ -73,18 +73,18 @@ server <- function(input, output) {
       if(input$sci_name_input %in% all_neg_sci_name){
         leaflet() %>% 
           addTiles() %>% 
-          addRasterImage( x = rast, colors = c("#B03B12", "#EC9971", "#F9E0D2"),
+          addRasterImage( x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                         opacity = input$map_transparency_input) %>% 
-          addLegend(colors = c("#B03B12", "#EC9971", "#F9E0D2"),
+          addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                     labels = c("High", "Moderate", "Low"),
                     values = values(rast),
                     title = "Drought Sensitivity")
       } else {
         leaflet() %>% 
           addTiles() %>% 
-          addRasterImage(x = rast, colors = c("#B03B12", "#EC9971", "#F9E0D2", "#144D6F"),
+          addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                         opacity =  input$map_transparency_input) %>% 
-          addLegend(colors = c("#B03B12", "#EC9971", "#F9E0D2", "#144D6F"),
+          addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                     labels = c("High", "Moderate", "Low", "Least Concern"),
                     values = values(rast),
                     title = "Drought Sensitivity")
@@ -114,18 +114,18 @@ server <- function(input, output) {
       if(input$common_name_input %in% all_neg_common_name){
         leaflet() %>% 
           addTiles() %>% 
-          addRasterImage(x = rast, colors = c("#B03B12", "#EC9971", "#F9E0D2"),
+          addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                         opacity = input$map_transparency_input) %>% 
-          addLegend(colors = c("#B03B12", "#EC9971", "#F9E0D2"),
+          addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                     labels = c("High", "Moderate", "Low"),
                     values = values(rast),
                     title = "Drought Sensitivity")
       } else {
         leaflet() %>% 
           addTiles() %>% 
-          addRasterImage(x = rast,colors = c("#B03B12", "#EC9971", "#F9E0D2", "#144D6F"),
+          addRasterImage(x = rast,colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                         opacity = input$map_transparency_input) %>% 
-          addLegend(colors = c("#B03B12", "#EC9971", "#F9E0D2", "#144D6F"),
+          addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                     labels = c("High", "Moderate", "Low", "Least Concern"),
                     values = values(rast),
                     title = "Drought Sensitivity")
