@@ -1,6 +1,8 @@
 ## ClimaTree Dashboard 💻
 Shiny App Development for ClimaTree
 
+[**link to our dashboard**](https://shinyapps.bren.ucsb.edu/climatree/)
+
 This repository develops an interactive dashboard with maps of categorized tree sensitivity to drought across species ranges. Users will be able to efficiently view species and regions of interest and download the data required to recreate these maps.
 
 The ClimaTree project is a Masters in Environmental Data Science capstone project at the Bren School of Environmental Science & Management (UCSB)
