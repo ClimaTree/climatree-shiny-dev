@@ -1,4 +1,4 @@
-server <- function(input, output) {
+server <- function(input, output, session) {
   
   
   ## ======================================================
@@ -14,6 +14,13 @@ server <- function(input, output) {
       pageLength = 10)
   )
   
+  # Render the leaflet proxy map 
+  # output$map_output <- renderLeaflet({
+  #   map
+  # })
+  # 
+  # m <- leafletProxy("map", session)
+  
   ## ======================================================
   ##                   Map by Species Code             ----
   ## ======================================================  
@@ -27,23 +34,18 @@ server <- function(input, output) {
       
       if(input$sp_code_input %in% all_neg_code){
         leaflet() %>% 
-          addTiles() %>% 
-        #addProviderTiles(providers$Esri.OceanBasemap) %>% 
-          #addProviderTiles(providers$Esri.WorldTerrain) %>% 
-          addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
-                        opacity = input$map_transparency_input) %>% 
+          addTiles() %>%
+          addRasterImage( x  = rast, colors = c("#8c2f0e","#E7844C", "#F0B28F"),
+                         opacity = input$map_transparency_input, project = TRUE) %>% 
           addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                     labels = c("High", "Moderate", "Low"),
                     values = values(rast),
                     title = "Drought Sensitivity")
       } else {
         leaflet() %>% 
-          addTiles() %>% 
-          
-          #addProviderTiles(providers$Esri.OceanBasemap) %>% 
-          #addProviderTiles(providers$Esri.WorldTerrain) %>% 
-          addRasterImage(rast,  colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
-                        opacity =  input$map_transparency_input) %>% 
+          addTiles() %>%
+          addRasterImage( x = rast, colors = c("#8C2F0E", "#E7844C", "#F0B28F", "#144D6F"), 
+                         opacity = input$map_transparency_input, project = TRUE) %>% 
           addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                     labels = c("High", "Moderate", "Low", "Least Concern"),
                     values = values(rast),
@@ -73,8 +75,9 @@ server <- function(input, output) {
       if(input$sci_name_input %in% all_neg_sci_name){
         leaflet() %>% 
           addTiles() %>% 
-          addRasterImage( x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
-                        opacity = input$map_transparency_input) %>% 
+          #addStarsImage()
+          addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
+                        opacity = input$map_transparency_input, project = TRUE) %>% 
           addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                     labels = c("High", "Moderate", "Low"),
                     values = values(rast),
@@ -83,7 +86,7 @@ server <- function(input, output) {
         leaflet() %>% 
           addTiles() %>% 
           addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
-                        opacity =  input$map_transparency_input) %>% 
+                        opacity =  input$map_transparency_input, project = TRUE) %>% 
           addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                     labels = c("High", "Moderate", "Low", "Least Concern"),
                     values = values(rast),
@@ -115,7 +118,7 @@ server <- function(input, output) {
         leaflet() %>% 
           addTiles() %>% 
           addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
-                        opacity = input$map_transparency_input) %>% 
+                        opacity = input$map_transparency_input, project = TRUE) %>% 
           addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F"),
                     labels = c("High", "Moderate", "Low"),
                     values = values(rast),
@@ -123,8 +126,8 @@ server <- function(input, output) {
       } else {
         leaflet() %>% 
           addTiles() %>% 
-          addRasterImage(x = rast,colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
-                        opacity = input$map_transparency_input) %>% 
+          addRasterImage(x = rast, colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
+                        opacity = input$map_transparency_input, project = TRUE) %>% 
           addLegend(colors = c("#8c2f0e", "#E7844C", "#F0b28F", "#144D6F"),
                     labels = c("High", "Moderate", "Low", "Least Concern"),
                     values = values(rast),
@@ -164,6 +167,13 @@ server <- function(input, output) {
     output$reactive_download_table_output <- renderDataTable
     })
   
+  
+  ## ======================================================
+  ##                button for dashboard              ----
+  ## ======================================================
+  observeEvent(input$btn, {
+    updateTabItems(session, "tabs", "dashboard")
+  })
   
   
   

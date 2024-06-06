@@ -12,6 +12,7 @@ sidebar <- dashboardSidebar(
   
   # sidebarMenu ----
   sidebarMenu(
+    id = "tabs",
     
     menuItem(text = "About", tabName = "about", icon = icon("house")),
     menuItem(text = "Sensitivity Maps", tabName = "dashboard", icon = icon("leaf")),
@@ -44,22 +45,26 @@ body <- dashboardBody(
                      
                      # background box
                      box(width = 12,
-                         includeMarkdown("text/background.md")
-                     )),# END overview fluidRow
+                         includeMarkdown("text/background.md"),
+                         headerPanel(""),
+                         #tags$style(HTML('#btn{background-color:#4a5342} #btn:hover{background-color:#78866b} #btn:{color: #f4f4f4} ')),
+                         actionButton("btn", "Explore Sensitivity Map Dashbaord", class = "btn-primary" ),
+                         headerPanel(""),
+                     ),# END overview fluidRow
+            ),
             
             # range map box ----
             fluidRow(width = 12,
                      
                      box(width = 12,
                          title = tagList(icon("earth-americas"), strong("Included Species Ranges")),
-                         tags$img(src = "data/range_26.jpg"),
+                         tags$img(src ="range_26.jpg", height="75%", width="75%", align="center",
+                                  alt = "A Map of 26 species within a global context. A majority of our range is within the Northern Hemisphere.",
+                                  style  = "max-width:80%; text-align: center;display: block; margin-left: auto; margin-right: auto;"),
                          includeMarkdown("text/species.md")
                          )
             ),
-                         #tags$img(src = "data/range_26.jpg"))),
-                         # tags$img(src = "data/range_26.jpg", 
-                         #          alt = "A Map of 26 species within a global context. A majority of our range is within the Northern Hemisphere.",
-                         #          style = "max-width:80%; text-align: center;display: block; margin-left: auto; margin-right: auto;"))),
+
             
             # explore spp table ----
             fluidRow(width = 12,
@@ -80,9 +85,9 @@ body <- dashboardBody(
                   title = tagList(icon("tree"), strong("Mapping Tree Sensitivity")),
                   tags$style(HTML(".irs--shiny .irs-bar--single {background: #78866b}")),
                   includeMarkdown("text/dashboard-about.md"),
-                  #start flowLayout
+                  #start flowLayout ---
                   flowLayout(
-                    #"selectInputs here"
+                    #selectInputs here ---
                     selectInput(inputId = "common_name_input",
                                 label = "Common Name",
                                 choices = c("Common Name"="", unique(combined_pred$common_name)),

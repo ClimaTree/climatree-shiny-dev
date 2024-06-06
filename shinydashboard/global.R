@@ -1,3 +1,28 @@
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+# Authors: Briana Barajas, Fletcher McConnell, Rosemary Juarez, Vanessa Salgado
+# Project: Mapping Tree Species' Drought Sensitivity Under Climate Change
+# Institution: Bren School of Environmental Science & Management - UCSB
+# Date: 2024-06-07
+# Purpose: Convert combined_pred_raw
+
+# Input files:
+# - TerraClimate19611990_def.nc: rasters of historic cwd
+# - TerraClimate19611990_pet.nc: rasters of historic pet
+# - site_summary.csv: site attributes
+# - itrdbsites_pet.csv: monthly site pet
+# - itrdbsites_def.csv monthly site cwd
+# - merged_ranges_dissolve.shp: shapefiles tree species' ranges
+# - cmip5_cwdaet_end.Rdat: cwd predictions using CMIP5
+# - cmip5_cwdaet_start.Rdat: cwd predictions using CMIP5
+#
+# Output files:
+# - clim_niche.csv
+# - sp_clim_predictions.gz
+# - site_ave_clim.gz
+# - site_an_clim.gz
+#
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 # ==== essential libraries ====
 library(shiny)
 library(shinydashboard)
@@ -130,3 +155,11 @@ for (i in unique(combined_pred$common_name)) {
   # add raster to list
   common_name_rast_list[[clean_name]] <- rast
 }
+
+# .........................providers for leaflet map......................
+providers <- c("CartoDB.Positron", "Acetate.terrain")
+
+map <- leaflet() %>%
+  addTiles()
+
+#write_csv( x = combined_pred_raw, path = here::here("shinydashboard", "data"),)
