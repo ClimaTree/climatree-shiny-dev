@@ -1,16 +1,12 @@
 # Mapping Tree Species Sensitivity to Changes in Water Availability
 
-#### Drought Sensitivity in Water Availabilty 
+#### Drought Sensitivity in Water Availabilty
 
-Climate change is having a range of effects on forests (positive and negative). Droughts have been happening for a very long time but the most concerning impact on forests are the increasing severity and duration of droughts. Understanding how forests react to drier conditions has been a point of interest therefore there is a dire need to know which trees are most sensitive to changes in water availability. 
+Forests cover approximately 30% of Earth's land surface, absorb more carbon than all other terrestrial ecosystems, and provide trillions of dollars’ worth of ecosystem services (Food and Agriculture Organization of the United Nations, 2005). However, forests are increasingly threatened by climate change-induced shifts in drought frequency and severity. As temperatures incease, it is critical to develop effective management strategies and identify techniques to prioritize management interventions. For example, developing cutting-edge models that can identify regions within a species’ range that are more vulnerable to drought can bolster restoration efforts, particularly for threatened species and species exposed to frequent droughts. 
 
-The goal of this project and dashboard is to explore the effect of trees under water deficiency across their species range to the year 2100. We would like to map tree sensitivity at a species level for species found in the International Tree Ring Data Bank 
+#### Mapping Tree Sensitivty Dashboard
 
+The Mapping Tree Sensitivy Dashboard assses species-specific sensitivity to drought by quantifying variation in drought-sensitivity across tree species’ ranges. This localized information is citical for land managers to develop targeted drought-adaptation strategies. 
+By analyzing variation in drought-sensitivity for 26 tree species, we demonstrate that th eimpacts of drier conditions vary by species and across species’ ranges. Our findings suggest that effective management strategies will need to consider species-level variation in drought sensitivity to sustain ecosystem services under climate change.
 
-#### Why We Built This Dashboard
-
-To confront the challenges of species-specific sensitivity mapping, our goal with the dashboard is to create maps that more accurately capture drought sensitivity in different species ranges primarily in wetter colder regions.
-
-We hope this dashboard can act as a tool to map tree vulnerarlity as a result of sensitivity to changing climate conditions.
-
-
+We hope this dashboard can act as a tool for land management partners to identify regions where management interventions may be needed under climate change. 
